@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ConceptLatticeFromServer } from './models/concept-lattices.model';
+import { ConceptLatticesService } from './services/concept-lattices.service';
 
 @Component({
   selector: 'fca-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'FCA';
+  public data$: Observable<ConceptLatticeFromServer> = this.conceptLaticesService.getConceptLattice({id: 1});
+
+  constructor(private readonly conceptLaticesService: ConceptLatticesService) {
+  }
 }
