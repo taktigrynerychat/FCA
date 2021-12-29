@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="buttons">
       <ng-container *ngIf="data">
-        Badges:
+        <h3>Badges:</h3>
         <mat-button-toggle-group
           class="toggle-buttons"
           name="fontStyle"
@@ -14,6 +14,10 @@
             checked
           >Not Collapsed
           </mat-button-toggle>
+          <mat-button-toggle
+            value="italic"
+          >Hidden
+          </mat-button-toggle>
         </mat-button-toggle-group>
       </ng-container>
     </div>
@@ -24,9 +28,48 @@
     </div>
   </div>
   <div class="content">
-
-    <div class="concept-lattice-container"></div>
-
+    <div
+      class="concept-lattice-container"
+      (click)="log($event)"
+    ></div>
+    <div
+      *ngIf="dataJson"
+      class="concept-lattice-data"
+    >
+      <fca-concept-table
+        class="concept-lattice-table"
+        [data]="dataJson"
+        [selectedRowId]="selectedNode?.id"
+      ></fca-concept-table>
+      <div class="concept-lattice-table">
+        <h1>Selected Node:</h1>
+        <div
+          *ngIf="selectedNode"
+          class="selected-node-list"
+        >
+          <div class="selected-node-row">
+            <span>Objects:</span>
+            <span>{{ selectedNode.objects.length ? selectedNode.objects.join(', ') : '-' }}</span>
+          </div>
+          <div class="selected-node-row">
+            <span>Attributes:</span>
+            <span>{{ selectedNode.attributes.length ? selectedNode.attributes.join(', ') : '-' }}</span>
+          </div>
+          <div class="selected-node-row">
+            <span>Owned Objects:</span>
+            <span>{{ selectedNode.ownedObjects.length ? selectedNode.ownedObjects.join(', ') : '-'}}</span>
+          </div>
+          <div class="selected-node-row">
+            <span>Owned Attributes:</span>
+            <span>{{ selectedNode.ownedAttributes.length ? selectedNode.ownedAttributes.join(', ') : '-' }}</span>
+          </div>
+          <div class="selected-node-row">
+            <span>Node Level:</span>
+            <span>{{ selectedNode.level}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

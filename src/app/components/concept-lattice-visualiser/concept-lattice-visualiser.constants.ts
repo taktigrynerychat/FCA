@@ -63,7 +63,7 @@ function collide(node: any) {
   };
 }
 
-export function drawGraph(graph: ConceptLatticeFromServer) {
+export function drawGraph(graph: ConceptLatticeFromServer, selectedCallback?: Function) {
   conceptLattice.graph = graph;
   const lastNode = graph.nodes[graph.lastNode];
   const width = 0.65 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
@@ -169,6 +169,9 @@ export function drawGraph(graph: ConceptLatticeFromServer) {
     .on('dblclick', function(d, i) {
       d.fixed = false;
       conceptLattice.force.resume();
+    })
+    .on('click', function(d, i) {
+      selectedCallback(d);
     })
     .on('mousemove', function(d, i) {
       conceptLattice.mouseMove += 1;
@@ -321,70 +324,6 @@ export function drawGraph(graph: ConceptLatticeFromServer) {
       return 'translate(' + [d.x, d.initialY] + ')';
     });
   });
-
-  // if (typeof LOCKABLE_ELEMENTS != 'undefined') {
-  //   conceptLattice.gnodes.on("contextmenu", function (d, i) {
-  //     d3.event.preventDefault();
-  //
-  //     var triadicConcept = d.triadicConcept;
-  //
-  //     d3.selectAll(".node-popup").remove();
-  //
-  //     var parentOffset = $(".concept-lattice-container").offset();
-  //     var relX = d3.event.pageX - parentOffset.left;
-  //     var relY = d3.event.pageY - parentOffset.top;
-  //
-  //     var popup = d3.select(".concept-lattice-container")
-  //       .append("div")
-  //       .attr("class", "node-popup")
-  //       .style("left", relX + "px")
-  //       .style("top", relY + "px");
-  //
-  //     popup.append("h3").attr("class", "popup-title").text("Triadic Concept");
-  //     var content = popup.append("div").attr("class", "popup-content");
-  //     var lockList = content.append("div").attr("class", "dimensions-lock-list");
-  //
-  //     var group, btnClass;
-  //     var key, value;
-  //     var dimensions = ["object", "attribute", "condition"];
-  //
-  //     for (var dimKey = 0; dimKey < 3; dimKey++) {
-  //       group = lockList.append("div")
-  //         .attr("class", "btn-group")
-  //         .attr("role", "group")
-  //         .attr("data-group", dimensions[dimKey])
-  //       ;
-  //       for (key in triadicConcept[dimKey]) {
-  //         value = triadicConcept[dimKey][key];
-  //         btnClass = "btn-default";
-  //
-  //         if (conceptLattice.graph.lock.indexOf(value) > -1) {
-  //           btnClass = "btn-success";
-  //         }
-  //
-  //         group.append("a").attr("class", "btn " + btnClass).attr("data-value", value).text(value);
-  //       }
-  //       lockList.append("br");
-  //     }
-  //
-  //     lockList.append("button").attr("class", "btn btn-primary apply-dimensions-lock").text("Lock");
-  //   });
-  // }
-
-  // if (typeof graph.analogicalComplexes != 'undefined') {
-  //   var select = $("#choose_complex");
-  //   for (var index in graph.analogicalComplexes) {
-  //     $("<option>").text(index).val(index).appendTo(select);
-  //   }
-  // } else {
-  //   $(".complex-selector").remove();
-  // }
-  //
-  //
-  // $(".printable-concept-lattice-btn").click(function () {
-  //   var svgString = getSVGString(svg.node());
-  //   svgString2Image(svgString, 8 * width, 8 * height);
-  // });
 }
 
 export function orderNodesByLevel(lattice: ConceptLatticeFromServer): ConceptLatticeFromServer {

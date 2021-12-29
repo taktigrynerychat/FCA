@@ -15,7 +15,12 @@ export class ConceptLatticesService {
     return this.http.get(dataUrl)
       .pipe(
         delay(1500),
-        map(data => data as ConceptLatticeFromServer),
+        map((data: any) => {
+          return {
+            ...data,
+            nodes: data.nodes.map((i, idx) => ({...i, id: idx}))
+          } as ConceptLatticeFromServer;
+        }),
       );
   }
 }

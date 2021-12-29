@@ -21,6 +21,7 @@ export type ConceptLatticeNode = {
   ownedObjects?: string[],
   ownedAttributes?: string[],
   fixed?: boolean,
+  id?: number;
 };
 export type ConceptLatticeLink = {
   source: number,
