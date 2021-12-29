@@ -1,3 +1,32 @@
-<div class="concept-lattice-container"></div>
-<p>concept-lattice-visualiser works!</p>
-<pre>{{ data | json }}</pre>
+<div class="container">
+  <div class="sidebar">
+    <div class="buttons">
+      <ng-container *ngIf="data">
+        Badges:
+        <mat-button-toggle-group
+          class="toggle-buttons"
+          name="fontStyle"
+          aria-label="Font Style"
+        >
+          <mat-button-toggle value="bold">Collapsed</mat-button-toggle>
+          <mat-button-toggle
+            value="italic"
+            checked
+          >Not Collapsed
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </ng-container>
+    </div>
+    <div class="json">
+      <ng-container *ngIf="data">
+        <pre>{{ data | json }}</pre>
+      </ng-container>
+    </div>
+  </div>
+  <div class="content">
+
+    <div class="concept-lattice-container"></div>
+
+  </div>
+</div>
+

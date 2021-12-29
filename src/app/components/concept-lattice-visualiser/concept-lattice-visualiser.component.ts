@@ -16,8 +16,10 @@ export class ConceptLatticeVisualiserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    drawGraph(this.data);
-    console.log(conceptLattice);
+    if (this.data) {
+      drawGraph(this.data);
+      console.log(conceptLattice);
+    }
   }
 
 }

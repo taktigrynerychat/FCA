@@ -1,4 +1,11 @@
-<mat-progress-bar *ngIf="!(data$ | async)" mode="indeterminate" color="accent"></mat-progress-bar>
+<mat-toolbar color="primary">
+  <span>FCA Visualisation Tool</span>
+</mat-toolbar>
+<ng-container *ngIf="!(data$ | async)">
+  <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+  <fca-concept-lattice-visualiser [data]="null"></fca-concept-lattice-visualiser>
+</ng-container>
+
 <ng-container *ngIf="data$ | async as data">
   <fca-concept-lattice-visualiser [data]="data"></fca-concept-lattice-visualiser>
 </ng-container>

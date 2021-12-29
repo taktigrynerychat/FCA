@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  height: calc(100% - 65px);
+  gap: 25px;
+
+  .sidebar {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    flex-direction: column;
+    gap: 15px;
+
+    .buttons {
+      padding: 10px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      height: 20%;
+
+      .toggle-buttons {
+        display: flex;
+      }
+    }
+
+    .json {
+      display: flex;
+      overflow: auto;
+      height: 80%;
+      background: white;
+    }
+
+  }
+
+  .content {
+    display: flex;
+    width: 70%;
+    background: white;
+  }
+}

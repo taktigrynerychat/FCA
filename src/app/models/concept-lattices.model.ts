@@ -8,7 +8,6 @@ export interface ConceptLatticeFromServer {
   links: ConceptLatticeLink[];
   maxLevel: number;
   lastNode: number;
-  analogicalComplexes: any[];
 }
 
 export type ConceptLatticeNode = {
