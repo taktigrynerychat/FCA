@@ -14,7 +14,6 @@ export class ConceptLatticesService {
     const dataUrl: string = `assets/data/concept-${ id }${ full ? '-full' : '' }.json`;
     return this.http.get(dataUrl)
       .pipe(
-        delay(1500),
         map((data: any) => {
           return {
             ...data,

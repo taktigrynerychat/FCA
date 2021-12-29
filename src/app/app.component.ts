@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { ConceptLatticeFromServer } from './models/concept-lattices.model';
 import { ConceptLatticesService } from './services/concept-lattices.service';
 
@@ -10,7 +10,7 @@ import { ConceptLatticesService } from './services/concept-lattices.service';
 })
 export class AppComponent {
   public data$: Observable<ConceptLatticeFromServer> = this.conceptLaticesService
-    .getConceptLattice({id: 1});
+    .getConceptLattice({id: 1}).pipe(delay(1500));
 
   // .pipe(map(orderNodesByLevel));
 
