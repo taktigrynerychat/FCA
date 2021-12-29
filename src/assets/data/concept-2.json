@@ -1,0 +1,158 @@
+{
+  "nodes": [
+    {
+      "objects": [
+        "g1",
+        "g2",
+        "g3",
+        "g4",
+        "g5"
+      ],
+      "attributes": [],
+      "level": 1
+    },
+    {
+      "objects": [
+        "g1",
+        "g5"
+      ],
+      "attributes": [
+        "m5"
+      ],
+      "level": 2
+    },
+    {
+      "objects": [
+        "g1",
+        "g4"
+      ],
+      "attributes": [
+        "m1",
+        "m3",
+        "m4"
+      ],
+      "level": 4
+    },
+    {
+      "objects": [
+        "g2",
+        "g5"
+      ],
+      "attributes": [
+        "m2"
+      ],
+      "level": 2
+    },
+    {
+      "objects": [
+        "g1",
+        "g2",
+        "g4"
+      ],
+      "attributes": [
+        "m1"
+      ],
+      "level": 2
+    },
+    {
+      "objects": [
+        "g2"
+      ],
+      "attributes": [
+        "m1",
+        "m2"
+      ],
+      "level": 3
+    },
+    {
+      "objects": [
+        "g1"
+      ],
+      "attributes": [
+        "m1",
+        "m3",
+        "m4",
+        "m5"
+      ],
+      "level": 5
+    },
+    {
+      "objects": [
+        "g5"
+      ],
+      "attributes": [
+        "m2",
+        "m5"
+      ],
+      "level": 3
+    },
+    {
+      "objects": [],
+      "attributes": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5"
+      ],
+      "level": 6
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "target": 1
+    },
+    {
+      "source": 0,
+      "target": 3
+    },
+    {
+      "source": 0,
+      "target": 4
+    },
+    {
+      "source": 4,
+      "target": 5
+    },
+    {
+      "source": 3,
+      "target": 5
+    },
+    {
+      "source": 3,
+      "target": 7
+    },
+    {
+      "source": 1,
+      "target": 7
+    },
+    {
+      "source": 4,
+      "target": 2
+    },
+    {
+      "source": 2,
+      "target": 6
+    },
+    {
+      "source": 1,
+      "target": 6
+    },
+    {
+      "source": 6,
+      "target": 8
+    },
+    {
+      "source": 7,
+      "target": 8
+    },
+    {
+      "source": 5,
+      "target": 8
+    }
+  ],
+  "maxLevel": 6,
+  "lastNode": 8,
+  "analogicalComplexes": []
+}

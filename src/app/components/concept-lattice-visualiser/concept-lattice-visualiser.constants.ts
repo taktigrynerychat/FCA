@@ -2,16 +2,22 @@ import { ConceptLatticeFromServer, ConceptLatticeNode } from '../../models/conce
 
 declare var d3: any;
 
+export enum GraphModes {
+  collapsed,
+  hidden,
+  full
+}
+
 export const conceptLattice: any = {
   settings: {
-    collisionDetection: false,
+    collisionDetection: true,
     showTopLabels: true,
     showBottomLabels: true,
     analogicalComplexId: -1,
-    collapseLabels: false,
+    collapseLabels: true,
     circleRadius: 18,
     circleRadiusVariation: 7,
-    linkDistance: 160,
+    linkDistance: 100,
     textTopOffset: '-1.6em',
     textBottomOffset: '2.5em',
   },
@@ -32,7 +38,7 @@ function collide(node: any) {
     textLength = Math.max(conceptLattice.bottomLabels[0][node.index].getComputedTextLength(), textLength);
   }
 
-  let nodeRadius = Math.max(15, textLength / 2) + 7;
+  let nodeRadius = Math.max(18  , textLength / 2) + 7;
   let nx1 = node.x - nodeRadius;
   let nx2 = node.x + nodeRadius;
 
@@ -64,14 +70,15 @@ function collide(node: any) {
 }
 
 export function drawGraph(graph: ConceptLatticeFromServer, selectedCallback?: Function) {
+  document.querySelector('.concept-lattice-container').innerHTML = "";
   conceptLattice.graph = graph;
   const lastNode = graph.nodes[graph.lastNode];
   const width = 0.65 * (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
-  const height = graph.maxLevel * 100;
+  const height = graph.maxLevel * 130;
 
   graph.nodes.forEach(function(node, index) {
     node.x = width / 2 - conceptLattice.settings.circleRadius + index;
-    node.y = 50 + (node.level - 1) * 100;
+    node.y = 50 + (node.level - 1) * 130;
     node.initialY = node.y;
     node.ownedObjects = node.objects;
     node.ownedAttributes = node.attributes;
@@ -102,7 +109,6 @@ export function drawGraph(graph: ConceptLatticeFromServer, selectedCallback?: Fu
     .size([width, height])
     .gravity(0)
   ;
-
   const svg = d3.select('.concept-lattice-container').append('svg')
     .attr('width', width)
     .attr('height', height)

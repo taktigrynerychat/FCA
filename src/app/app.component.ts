@@ -11,8 +11,14 @@ import { ConceptLatticesService } from './services/concept-lattices.service';
 export class AppComponent {
   public data$: Observable<ConceptLatticeFromServer> = this.conceptLaticesService
     .getConceptLattice({id: 1});
-    // .pipe(map(orderNodesByLevel));
+
+  // .pipe(map(orderNodesByLevel));
 
   constructor(private readonly conceptLaticesService: ConceptLatticesService) {
+  }
+
+  contextChanged(id: number): void {
+    this.data$ = this.conceptLaticesService
+      .getConceptLattice({id});
   }
 }

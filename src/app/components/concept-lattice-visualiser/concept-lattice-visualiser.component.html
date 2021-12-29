@@ -2,23 +2,38 @@
   <div class="sidebar">
     <div class="buttons">
       <ng-container *ngIf="data">
+        <h3>Context:</h3>
+        <mat-form-field appearance="fill" >
+          <mat-label>Selected context</mat-label>
+          <mat-select [(ngModel)]="selectedContext" (ngModelChange)="contextChange($event)">
+            <mat-option *ngFor="let el of [1,2]" [value]="el">
+              context-{{el}}.json
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <h3>Badges:</h3>
-        <mat-button-toggle-group
-          class="toggle-buttons"
-          name="fontStyle"
-          aria-label="Font Style"
-        >
-          <mat-button-toggle value="bold">Collapsed</mat-button-toggle>
-          <mat-button-toggle
-            value="italic"
-            checked
-          >Not Collapsed
-          </mat-button-toggle>
-          <mat-button-toggle
-            value="italic"
-          >Hidden
-          </mat-button-toggle>
-        </mat-button-toggle-group>
+        <div style="width: fit-content">
+          <mat-button-toggle-group
+            (change)="modeChange($event)"
+            class="toggle-buttons"
+            name="fontStyle"
+            aria-label="Font Style"
+          >
+            <mat-button-toggle
+              [value]="GraphModes.collapsed"
+              checked
+            >Collapsed
+            </mat-button-toggle>
+            <mat-button-toggle
+              [value]="GraphModes.full"
+            >Not Collapsed
+            </mat-button-toggle>
+            <mat-button-toggle
+              [value]="GraphModes.hidden"
+            >Hidden
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
       </ng-container>
     </div>
     <div class="json">
@@ -49,19 +64,19 @@
         >
           <div class="selected-node-row">
             <span>Objects:</span>
-            <span>{{ selectedNode.objects.length ? selectedNode.objects.join(', ') : '-' }}</span>
+            <span>{{ selectedNode.objects.length ? selectedNode.objects.join(', ') : '&#8709;' }}</span>
           </div>
           <div class="selected-node-row">
             <span>Attributes:</span>
-            <span>{{ selectedNode.attributes.length ? selectedNode.attributes.join(', ') : '-' }}</span>
+            <span>{{ selectedNode.attributes.length ? selectedNode.attributes.join(', ') : '&#8709;' }}</span>
           </div>
           <div class="selected-node-row">
             <span>Owned Objects:</span>
-            <span>{{ selectedNode.ownedObjects.length ? selectedNode.ownedObjects.join(', ') : '-'}}</span>
+            <span>{{ selectedNode.ownedObjects.length ? selectedNode.ownedObjects.join(', ') : '&#8709;'}}</span>
           </div>
           <div class="selected-node-row">
             <span>Owned Attributes:</span>
-            <span>{{ selectedNode.ownedAttributes.length ? selectedNode.ownedAttributes.join(', ') : '-' }}</span>
+            <span>{{ selectedNode.ownedAttributes.length ? selectedNode.ownedAttributes.join(', ') : '&#8709;' }}</span>
           </div>
           <div class="selected-node-row">
             <span>Node Level:</span>
