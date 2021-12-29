@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ConceptLatticeFromServer } from './models/concept-lattices.model';
 import { ConceptLatticesService } from './services/concept-lattices.service';
@@ -9,7 +9,9 @@ import { ConceptLatticesService } from './services/concept-lattices.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public data$: Observable<ConceptLatticeFromServer> = this.conceptLaticesService.getConceptLattice({id: 1});
+  public data$: Observable<ConceptLatticeFromServer> = this.conceptLaticesService
+    .getConceptLattice({id: 1});
+    // .pipe(map(orderNodesByLevel));
 
   constructor(private readonly conceptLaticesService: ConceptLatticesService) {
   }

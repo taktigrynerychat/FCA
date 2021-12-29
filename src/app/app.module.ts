@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { ConceptLatticeVisualiserComponent } from './components/concept-lattice-
     BrowserAnimationsModule,
     MatButtonModule,
     HttpClientModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

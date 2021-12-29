@@ -11,6 +11,20 @@ export interface ConceptLatticeFromServer {
   analogicalComplexes: any[];
 }
 
-export type ConceptLatticeNode = { objects: string[], attributes: string[], level: number };
-export type ConceptLatticeLink = { source: number, target: number };
+export type ConceptLatticeNode = {
+  objects: string[],
+  attributes: string[],
+  level: number,
+
+  x?: number,
+  y?: number,
+  initialY?: number,
+  ownedObjects?: string[],
+  ownedAttributes?: string[],
+  fixed?: boolean,
+};
+export type ConceptLatticeLink = {
+  source: number,
+  target: number
+};
 

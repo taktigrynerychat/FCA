@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ConceptLatticeFromServer } from '../../models/concept-lattices.model';
+import { conceptLattice, drawGraph } from './concept-lattice-visualiser.constants';
 
 @Component({
   selector: 'fca-concept-lattice-visualiser',
@@ -15,6 +16,8 @@ export class ConceptLatticeVisualiserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    drawGraph(this.data);
+    console.log(conceptLattice);
   }
 
 }
